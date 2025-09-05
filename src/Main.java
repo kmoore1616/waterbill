@@ -1,10 +1,30 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class Main {
     public static void main(String[] args){
-        String name = "Alice";
-        int gallonsUsed = 8000;
-        int customerType = 1;  // 1- Single family
+
+        String name  = null;
+        int gallonsUsed = 0;
+        int customerType = 0;  // 1- Single family
         double bill = 0;
 
+
+        InputStreamReader inputStreamReader = new InputStreamReader(System.in);
+        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+        try {
+            System.out.println("Enter customer type 1-Single Family, 2-Duplex: ");
+            customerType = Integer.parseInt(bufferedReader.readLine());
+            System.out.printf("Enter customer name: ");
+            name = bufferedReader.readLine();
+            System.out.printf("Enter gallons used: ");
+            gallonsUsed = Integer.parseInt(bufferedReader.readLine());
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
 
         if (customerType == 1) {
@@ -19,7 +39,7 @@ public class Main {
                         + (gallonsUsed - 13000) * (2.70 / 1000.0);
             }
         } else {
-            if (gallonsUsed <= 7000) {
+            if (gallonsUsed <= 9000) {
                 bill = 15.51 + gallonsUsed * (1.97 / 1000.0);
             } else if (gallonsUsed <= 13000) {
                 bill = 15.51 + 9000 * (1.97 / 1000.0)
