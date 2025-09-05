@@ -1,14 +1,11 @@
 public class Main {
     public static void main(String[] args){
-
         String name = "Alice";
         int gallonsUsed = 8000;
         int customerType = 1;  // 1- Single family
         double bill = 0;
 
-        System.out.println("Customer type: " + customerType);
-        System.out.println("Customer name: " + name);
-        System.out.println("Gallons used: " + gallonsUsed);
+
 
         if (customerType == 1) {
             if (gallonsUsed <= 7000) {
@@ -34,6 +31,9 @@ public class Main {
             }
         }
 
-    System.out.println(bill);
+        System.out.println("Customer type: " + customerType);
+        System.out.println("Customer name: " + name);
+        System.out.println("Gallons used: " + gallonsUsed);
+        System.out.printf("Total Bill: $%.2f\n", bill);
     }
 }
