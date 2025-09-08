@@ -3,11 +3,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Customer {
-    String name  = null;
+    private String name  = null;
     int gallonsUsed = 0;
     int customerType = 0;  // 1- Single family
     double bill = 0;
 
+    public void set_name(String new_name){
+        name = new_name;
+    }
+
+    public String get_name(){
+        return name;
+    }
 
     /*
 
