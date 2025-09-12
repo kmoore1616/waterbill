@@ -26,8 +26,6 @@ public class Customer {
     final double SINGLE_BASE = 13.21;
 
     public void calculateBill() {
-
-
         if (customerType == 1) {
             if (gallonsUsed <= 7000) {
                 bill = SINGLE_BASE+ gallonsUsed * (2.04 / 1000.0);
