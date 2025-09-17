@@ -5,9 +5,8 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
         Customer customer = new Customer();
-        customer.setUserInfo();
-        customer.setGallonsUsed(200000000);
-        customer.calculateBill();
+        customer.setGallonsUsed(1);
+        customer.setName("");
         customer.printCustomerInfo();
     }
 }

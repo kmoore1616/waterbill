@@ -33,7 +33,11 @@ public class Customer {
     }
 
     public void setGallonsUsed(int gallonsUsed) {
-        this.gallonsUsed = gallonsUsed;
+        if (gallonsUsed < 0) {
+            System.out.println("Gallons must be greater than 0!");
+        }else{
+            this.gallonsUsed = gallonsUsed;
+        }
     }
 
     public String getName() {
@@ -41,7 +45,11 @@ public class Customer {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (name.equals("")){
+            System.out.println("Enter a Name!");
+        }else{
+            this.name = name;
+        }
     }
 
     public int getCustomerType() {
@@ -59,11 +67,11 @@ public class Customer {
     public void setUserInfo() {
         try {
             System.out.println("Enter customer type 1-Single Family, 2-Duplex: ");
-            customerType = Integer.parseInt(bufferedReader.readLine());
+            this.customerType = Integer.parseInt(bufferedReader.readLine());
             System.out.print("Enter customer name: ");
-            name = bufferedReader.readLine();
+            this.name = bufferedReader.readLine();
             System.out.print("Enter gallons used: ");
-            gallonsUsed = Integer.parseInt(bufferedReader.readLine());
+            this.gallonsUsed = Integer.parseInt(bufferedReader.readLine());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -71,19 +79,19 @@ public class Customer {
 
 
     public void calculateBill() {
-        if (customerType == 1) {
-            if (gallonsUsed <= SINGLE_TIER1) {
-                bill = SINGLE_BASE + gallonsUsed * (SINGLE_TIER1_COST / GALLONS);
+        if (this.customerType == 1) {
+            if (this.gallonsUsed <= SINGLE_TIER1) {
+                this.bill = SINGLE_BASE + this.gallonsUsed * (SINGLE_TIER1_COST / GALLONS);
             } else if (gallonsUsed <= TIER2_CUTOFF) {
-                bill = SINGLE_BASE + SINGLE_TIER1 * (SINGLE_TIER1_COST / GALLONS)
+                this.bill = SINGLE_BASE + SINGLE_TIER1 * (SINGLE_TIER1_COST / GALLONS)
                         + (gallonsUsed - SINGLE_TIER1) * (SINGLE_TIER2_COST / GALLONS);
             } else {
-                bill = SINGLE_BASE + SINGLE_TIER1 * (SINGLE_TIER1_COST / GALLONS)
+                this.bill = SINGLE_BASE + SINGLE_TIER1 * (SINGLE_TIER1_COST / GALLONS)
                         + SINGLE_TIER2 * (SINGLE_TIER2_COST / GALLONS)
                         + (gallonsUsed - TIER2_CUTOFF) * (SINGLE_TIER3_COST / GALLONS);
             }
         } else {
-            if (gallonsUsed <= DUPLEX_TIER1) {
+            if (this.gallonsUsed <= DUPLEX_TIER1) {
                 bill = DUPLEX_BASE + gallonsUsed * (DUPLEX_TIER1_COST / GALLONS);
             } else if (gallonsUsed <= TIER2_CUTOFF) {
                 bill = DUPLEX_BASE + DUPLEX_TIER1 * (DUPLEX_TIER1_COST / GALLONS)
