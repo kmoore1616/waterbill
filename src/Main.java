@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         Customer customer = new Customer();
         customer.setUserInfo();
-        customer.setGallonsUsed(-1000);
+        customer.setGallonsUsed(200000000);
         customer.calculateBill();
         customer.printCustomerInfo();
     }
