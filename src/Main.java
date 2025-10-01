@@ -5,12 +5,8 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        Customer customer = new Customer();
-        customer.setGallonsUsed(1);
-        customer.setName("");
-        customer.calculateBill();
-        customer.printCustomerInfo();
-
+    SingleFamily greg = new SingleFamily();
+    greg.customerInput();
 
     }
 }
