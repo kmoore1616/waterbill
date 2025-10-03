@@ -5,8 +5,15 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-    SingleFamily greg = new SingleFamily();
-    greg.customerInput();
+        SingleFamily greg = new SingleFamily();
+        greg.customerInput();
+        greg.calculateBill();
+        greg.printCustomerInfo();
+
+        Duplex gregory = new Duplex();
+        gregory.customerInput();
+        gregory.calculateBill();
+        gregory.printCustomerInfo();
 
     }
 }

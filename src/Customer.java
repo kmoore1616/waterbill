@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PipedReader;
 
 public class Customer {
     InputStreamReader inputStreamReader = new InputStreamReader(System.in);
@@ -9,6 +10,7 @@ public class Customer {
 
     private final int TIER2_CUTOFF = 13000;
     private final double GALLONS = 1000.0;
+    protected double bill; // TODO Need better stuff on dis one
 
 
     private final double LOW_INCOME_DISCOUNT = 0.10;
@@ -16,7 +18,6 @@ public class Customer {
     String name;
     private int gallonsUsed;
     private int customerType;  // 1- Single family
-    private double bill;
 
     public int getTIER2_CUTOFF() {
         return TIER2_CUTOFF;
@@ -75,6 +76,9 @@ public class Customer {
         }
     }
 
+    public void calculateBill(){
+
+    }
 
     public void printCustomerInfo(){
 
