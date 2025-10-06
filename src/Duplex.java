@@ -6,8 +6,10 @@ public class Duplex extends Customer{
     private final double DUPLEX_TIER2_COST = 2.26;
     private final double DUPLEX_TIER3_COST = 2.60;
 
+
     @Override
-    public void calculateBill() {
+    public double calculateBill() {
+        double bill;
         int gallonsUsed = getGallonsUsed();
         int tier2_cutoff = getTIER2_CUTOFF();
         double gallons = getGALLONS();
@@ -21,8 +23,8 @@ public class Duplex extends Customer{
                     + DUPLEX_TIER2 * (DUPLEX_TIER2_COST / gallons)
                     + (gallonsUsed - tier2_cutoff) * (DUPLEX_TIER3_COST / gallons);
         }
+        return bill;
     }
-
 
 
 

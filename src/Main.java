@@ -5,15 +5,13 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        SingleFamily greg = new SingleFamily();
-        greg.customerInput();
-        greg.calculateBill();
-        greg.printCustomerInfo();
-
-        Duplex gregory = new Duplex();
-        gregory.customerInput();
-        gregory.calculateBill();
-        gregory.printCustomerInfo();
-
+        Customer th = new Townhouse() {
+            @Override
+            public double calculateBill() {
+                return 999999;
+            }
+        };
+        th.generateBill();
+        System.out.println(th.getBill());
     }
 }

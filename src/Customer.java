@@ -1,16 +1,14 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PipedReader;
 
-public class Customer {
+public abstract class Customer {
     InputStreamReader inputStreamReader = new InputStreamReader(System.in);
     BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
-
     private final int TIER2_CUTOFF = 13000;
     private final double GALLONS = 1000.0;
-    protected double bill; // TODO Need better stuff on dis one
+    private double bill;
 
 
     private final double LOW_INCOME_DISCOUNT = 0.10;
@@ -76,8 +74,14 @@ public class Customer {
         }
     }
 
-    public void calculateBill(){
+    protected abstract double calculateBill();
 
+    public void generateBill(){
+        double calculateBill = calculateBill();
+        if(calculateBill < 0){
+            System.out.println("Bill must be positive");
+        }
+        this.bill = calculateBill;
     }
 
     public void printCustomerInfo(){

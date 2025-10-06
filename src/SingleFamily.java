@@ -33,7 +33,8 @@ public class SingleFamily extends Customer{
 
 
     @Override
-    public void calculateBill() {
+    public double calculateBill() {
+        double bill;
         int gallonsUsed = getGallonsUsed();
         int tier2_cutoff = getTIER2_CUTOFF();
         double gallons = getGALLONS();
@@ -47,11 +48,12 @@ public class SingleFamily extends Customer{
                     + SINGLE_TIER2 * (SINGLE_TIER2_COST / gallons)
                     + (gallonsUsed - tier2_cutoff) * (SINGLE_TIER3_COST / gallons);
         }
+        return bill;
     }
 
     public void applyDiscount(){
         if(isLowIncome){
-            bill = bill*0.9;
+            //bill = bill*0.9;
         }
     }
 }
