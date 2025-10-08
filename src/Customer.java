@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public abstract class Customer {
     InputStreamReader inputStreamReader = new InputStreamReader(System.in);
@@ -10,12 +11,17 @@ public abstract class Customer {
     private final double GALLONS = 1000.0;
     private double bill;
 
+    private static ArrayList<Customer> customers = new ArrayList<>();
 
     private final double LOW_INCOME_DISCOUNT = 0.10;
 
     String name;
     private int gallonsUsed;
     private int customerType;  // 1- Single family
+
+    public static ArrayList<Customer> getCustomers() {
+        return customers;
+    }
 
     public int getTIER2_CUTOFF() {
         return TIER2_CUTOFF;
@@ -77,11 +83,22 @@ public abstract class Customer {
     protected abstract double calculateBill();
 
     public void generateBill(){
-        double calculateBill = calculateBill();
-        if(calculateBill < 0){
+        double calculatedBill = calculateBill();
+        double finalBill = applyDiscount(calculatedBill);
+        if(finalBill< 0){
             System.out.println("Bill must be positive");
+        }else {
+            this.bill = finalBill;
+            registerCustomer();
         }
-        this.bill = calculateBill;
+    }
+
+    protected double applyDiscount(double calculatedBill){
+        return calculatedBill;
+    }
+
+    protected void registerCustomer(){
+        customers.add(this);
     }
 
     public void printCustomerInfo(){
@@ -91,4 +108,5 @@ public abstract class Customer {
         System.out.println("Gallons used: " + gallonsUsed);
         System.out.printf("Total Bill: $%.2f\n", bill);
     }
+
 }

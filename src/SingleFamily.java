@@ -15,6 +15,7 @@ public class SingleFamily extends Customer{
 
     private boolean isLowIncome;
 
+
     protected void setLowIncome(boolean isLowIncome) {
         this.isLowIncome = isLowIncome;
     }
@@ -51,9 +52,10 @@ public class SingleFamily extends Customer{
         return bill;
     }
 
-    public void applyDiscount(){
+    public double applyDiscount(double bill){
         if(isLowIncome){
-            //bill = bill*0.9;
+            bill = bill*0.9;
         }
+        return bill;
     }
 }

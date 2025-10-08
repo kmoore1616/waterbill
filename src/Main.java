@@ -5,13 +5,16 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        Customer th = new Townhouse() {
-            @Override
-            public double calculateBill() {
-                return 999999;
-            }
-        };
-        th.generateBill();
-        System.out.println(th.getBill());
+        Customer singlefam = new SingleFamily();
+        singlefam.customerInput();
+        singlefam.generateBill();
+
+        Customer dup = new Duplex();
+        dup.customerInput();
+        dup.generateBill();
+
+        for(Customer c : Customer.getCustomers()){
+            c.printCustomerInfo();
+        }
     }
 }
