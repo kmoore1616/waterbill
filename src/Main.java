@@ -13,10 +13,12 @@ public class Main {
         dup.customerInput();
         dup.generateBill();
 
-        System.out.println("hihg");
-        System.out.println(Customer.getHighestBill());
-        System.out.println("lowg");
-        System.out.println(Customer.getLowestBill());
+        Customer.sortCustomerBill();
+
+        System.out.println("Low");
+        System.out.println(Customer.getCustomers().get(0));
+        System.out.println("High");
+        System.out.println(Customer.getCustomers().get(1));
 
     }
 }

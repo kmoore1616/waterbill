@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public abstract class Customer {
+public abstract class Customer implements Comparable<Customer>{
     InputStreamReader inputStreamReader = new InputStreamReader(System.in);
     BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
@@ -136,5 +136,17 @@ public abstract class Customer {
         return min;
     }
 
+    public static void sortCustomerBill(){
 
+    }
+
+    @Override
+    public int compareTo(Customer o) {
+        // -1 this.object < o --> This object is smaller and must come first
+        // 0 this,object = o --> Nothing happens
+        // 1 this.object > 0 --> This object is larger and must come after
+
+
+        return Double.compare(this.bill, o.getBill());
+    }
 }
