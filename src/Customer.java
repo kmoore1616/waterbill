@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public abstract class Customer {
     InputStreamReader inputStreamReader = new InputStreamReader(System.in);
@@ -136,5 +137,11 @@ public abstract class Customer {
         return min;
     }
 
+    public static void sortCustomerByBill(){
+        getCustomers().sort(Comparator.comparingDouble(Customer::getBill));
+    }
 
+    public static void sortCustomerByGallonsUsed(){
+        getCustomers().sort(Comparator.comparingInt(Customer::getGallonsUsed));
+    }
 }
