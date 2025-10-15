@@ -15,7 +15,6 @@ public class SingleFamily extends Customer{
 
     private boolean isLowIncome;
 
-
     protected void setLowIncome(boolean isLowIncome) {
         this.isLowIncome = isLowIncome;
     }

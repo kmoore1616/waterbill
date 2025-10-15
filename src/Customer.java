@@ -23,6 +23,13 @@ public abstract class Customer {
         return customers;
     }
 
+    @Override
+    public String toString() {
+        return "Customer Name: " + name + "\n"+
+                "Gallons Used: " + gallonsUsed + "\n"+
+                "Total Bill: " + bill;
+    }
+
     public int getTIER2_CUTOFF() {
         return TIER2_CUTOFF;
     }
@@ -108,5 +115,26 @@ public abstract class Customer {
         System.out.println("Gallons used: " + gallonsUsed);
         System.out.printf("Total Bill: $%.2f\n", bill);
     }
+
+
+    public static Customer getHighestBill(){
+        Customer max = getCustomers().get(0);
+        for (Customer c : getCustomers()){
+            if(c.getBill() > max.getBill()){
+                max = c;
+            }
+        }
+        return max;
+    }
+    public static Customer getLowestBill() {
+        Customer min = getCustomers().get(0);
+        for (Customer c : getCustomers()) {
+            if (c.getBill() < min.getBill()) {
+                min = c;
+            }
+        }
+        return min;
+    }
+
 
 }
