@@ -15,6 +15,15 @@ public class SingleFamily extends Customer{
 
     private boolean isLowIncome;
 
+    public SingleFamily(){
+
+    }
+
+    public SingleFamily(String name, int customerType, int gallonsUsed, boolean isLowIncome){
+        super(name, customerType, gallonsUsed);
+        setLowIncome(isLowIncome);
+    }
+
     protected void setLowIncome(boolean isLowIncome) {
         this.isLowIncome = isLowIncome;
     }

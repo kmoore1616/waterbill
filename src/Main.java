@@ -5,17 +5,8 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args){
-        Customer single_fam= new SingleFamily();
+        Customer sf = new SingleFamily("John", 1, 100, false);
 
-        Customer dup = new Duplex();
-        System.out.println(dup);
-        dup.customerInput();
-        dup.generateBill();
-
-        System.out.println("high");
-        System.out.println(Customer.getHighestBill());
-        System.out.println("low");
-        System.out.println(Customer.getLowestBill());
 
     }
 }

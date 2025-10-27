@@ -19,6 +19,16 @@ public abstract class Customer {
     private String name;
     private int gallonsUsed;
     private int customerType;  // 1- Single family
+    // ======================== Constructors ===================================
+
+    public Customer() {
+    }
+
+    public Customer(String name, int customerType, int gallonsUsed) {
+        setName(name);
+        setCustomerType(customerType);
+        setGallonsUsed(gallonsUsed);
+    }
 
     // ======================== Getters and Setters =================================================
 
