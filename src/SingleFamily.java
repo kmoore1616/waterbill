@@ -18,6 +18,7 @@ public class SingleFamily extends Customer{
     protected void setLowIncome(boolean isLowIncome) {
         this.isLowIncome = isLowIncome;
     }
+
     @Override
     public void customerInput() {
         try {
@@ -30,7 +31,6 @@ public class SingleFamily extends Customer{
             throw new RuntimeException(e);
         }
     }
-
 
     @Override
     public double calculateBill() {

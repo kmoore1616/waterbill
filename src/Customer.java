@@ -16,20 +16,11 @@ public abstract class Customer {
 
     private final double LOW_INCOME_DISCOUNT = 0.10;
 
-    String name;
+    private String name;
     private int gallonsUsed;
     private int customerType;  // 1- Single family
 
-    public static ArrayList<Customer> getCustomers() {
-        return customers;
-    }
-
-    @Override
-    public String toString() {
-        return "Customer Name: " + name + "\n"+
-                "Gallons Used: " + gallonsUsed + "\n"+
-                "Total Bill: " + bill;
-    }
+    // ======================== Getters and Setters =================================================
 
     public int getTIER2_CUTOFF() {
         return TIER2_CUTOFF;
@@ -43,16 +34,21 @@ public abstract class Customer {
         return gallonsUsed;
     }
 
-    public void setGallonsUsed(int gallonsUsed) {
-        if (gallonsUsed < 0) {
-            System.out.println("Gallons must be greater than 0!");
-        }else{
-            this.gallonsUsed = gallonsUsed;
-        }
+    public double getBill() {
+        return bill;
     }
 
     public String getName() {
         return name;
+    }
+
+    public int getCustomerType() {
+        return customerType;
+    }
+
+
+    public void setCustomerType(int customerType) {
+        this.customerType = customerType;
     }
 
     public void setName(String name) {
@@ -63,17 +59,25 @@ public abstract class Customer {
         }
     }
 
-    public int getCustomerType() {
-        return customerType;
+    public void setGallonsUsed(int gallonsUsed) {
+        if (gallonsUsed < 0) {
+            System.out.println("Gallons must be greater than 0!");
+        }else{
+            this.gallonsUsed = gallonsUsed;
+        }
     }
 
-    public void setCustomerType(int customerType) {
-        this.customerType = customerType;
+
+    // =========================== Generic Overrides ========================================================
+
+    @Override
+    public String toString() {
+        return "Customer Name: " + name + "\n"+
+                "Gallons Used: " + gallonsUsed + "\n"+
+                "Total Bill: " + bill;
     }
 
-    public double getBill() {
-        return bill;
-    }
+    // =========================== Misc ========================================================
 
     public void customerInput() {
         try {
@@ -88,6 +92,20 @@ public abstract class Customer {
         }
     }
 
+    protected double applyDiscount(double calculatedBill){
+        return calculatedBill;
+    }
+
+    public void printCustomerInfo(){
+        System.out.println("Customer type: " + customerType);
+        System.out.println("Customer name: " + name);
+        System.out.println("Gallons used: " + gallonsUsed);
+        System.out.printf("Total Bill: $%.2f\n", bill);
+    }
+
+
+    // ======================= Bill ============================================================
+
     protected abstract double calculateBill();
 
     public void generateBill(){
@@ -101,22 +119,15 @@ public abstract class Customer {
         }
     }
 
-    protected double applyDiscount(double calculatedBill){
-        return calculatedBill;
+    // ============================ Array Stuff =======================================================
+
+    public static ArrayList<Customer> getCustomers() {
+        return customers;
     }
 
     protected void registerCustomer(){
         customers.add(this);
     }
-
-    public void printCustomerInfo(){
-
-        System.out.println("Customer type: " + customerType);
-        System.out.println("Customer name: " + name);
-        System.out.println("Gallons used: " + gallonsUsed);
-        System.out.printf("Total Bill: $%.2f\n", bill);
-    }
-
 
     public static Customer getHighestBill(){
         Customer max = getCustomers().get(0);

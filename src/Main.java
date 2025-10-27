@@ -6,16 +6,15 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args){
         Customer single_fam= new SingleFamily();
-        single_fam.customerInput();
-        single_fam.generateBill();
 
         Customer dup = new Duplex();
+        System.out.println(dup);
         dup.customerInput();
         dup.generateBill();
 
-        System.out.println("hihg");
+        System.out.println("high");
         System.out.println(Customer.getHighestBill());
-        System.out.println("lowg");
+        System.out.println("low");
         System.out.println(Customer.getLowestBill());
 
     }

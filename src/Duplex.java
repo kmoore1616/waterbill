@@ -26,7 +26,4 @@ public class Duplex extends Customer{
         return bill;
     }
 
-
-
-
 }
