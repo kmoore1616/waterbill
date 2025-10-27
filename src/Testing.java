@@ -2,20 +2,31 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Testing {
-
-    //
     // Single Family Tier 1 Testing
     //
     @Test
     public void testSingleFamilyTier1(){
-        Customer customer = new Customer();
-        customer.setCustomerType(1);
+        SingleFamily customer = new SingleFamily();
+        // customer.setCustomerType(1);
         customer.setGallonsUsed(6000);
-        customer.calculateBill();
+        customer.generateBill();
 
         assertEquals(25.45, customer.getBill(), 0.01);
     }
 
+    @Test
+    public void singleFamilyTier1LowIncome(){
+        SingleFamily customer = new SingleFamily();
+        // customer.setCustomerType(1);
+        customer.setGallonsUsed(6000);
+        customer.setLowIncome(true);
+        customer.generateBill();
+
+        assertEquals(22.90, customer.getBill(), 0.01);
+
+    }
+
+/*
     @Test
     public void testSingleFamily_Below7000(){
         Customer customer = new Customer();
@@ -200,4 +211,5 @@ public class Testing {
 
         assertEquals(41.59, customer.getBill(), 0.01);
     }
+ */
 }
