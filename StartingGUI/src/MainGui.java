@@ -1,9 +1,11 @@
 public class MainGui {
     public static void main(String args[]){
+        /*
         InClassView inClassView = new InClassView();
-        InClassController inClassController = new InClassController(inClassView);
         inClassView.initUI();
 
+        InClassController inClassController = new InClassController(inClassView);
+        */
 
     }
 }

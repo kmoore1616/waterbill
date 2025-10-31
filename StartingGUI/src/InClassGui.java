@@ -1,6 +1,4 @@
 import javax.swing.*;
-import javax.swing.text.BoxView;
-import java.awt.*;
 
 public class InClassGui {
     private JFrame jFrame;
