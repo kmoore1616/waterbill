@@ -5,7 +5,10 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args){
-        Customer sf = new SingleFamily("John", 1, 100, false);
+        CustomerGUI gui = new CustomerGUI();
+        gui.initializeUI();
+
+        CustomerController controller = new CustomerController(gui);
 
 
     }

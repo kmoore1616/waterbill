@@ -20,7 +20,7 @@ public class SingleFamily extends Customer{
     }
 
     public SingleFamily(String name, int customerType, int gallonsUsed, boolean isLowIncome){
-        super(name, customerType, gallonsUsed);
+        super(name, gallonsUsed);
         setLowIncome(isLowIncome);
     }
 

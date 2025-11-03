@@ -6,6 +6,10 @@ public class Duplex extends Customer{
     private final double DUPLEX_TIER2_COST = 2.26;
     private final double DUPLEX_TIER3_COST = 2.60;
 
+    public Duplex(String name, int gallons_used){
+        super(name, gallons_used);
+    }
+
 
     @Override
     public double calculateBill() {
