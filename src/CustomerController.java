@@ -7,6 +7,23 @@ public class CustomerController {
     public CustomerController(CustomerGUI view){
         this.view = view;
         view.addActionListenerGenerateBill(new ActionListenerGenerateBill());
+        view.addActionListenerDuplex(new ActionListenerDuplex());
+        view.addActionListenerSingleFamily(new ActionListenerSingleFamily());
+    }
+
+    public class ActionListenerDuplex implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            ;
+        }
+    }
+
+    public class ActionListenerSingleFamily implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            view.switchPanel(view.getSingleFamilyPanel());
+
+        }
     }
 
     public class ActionListenerGenerateBill implements ActionListener{
@@ -15,9 +32,10 @@ public class CustomerController {
             String name = view.getNameField().getText();
             int gallons_used = Integer.parseInt(view.getGallonsField().getText());
 
-            Customer c = new Duplex(name, gallons_used);
+            Customer c = view.getCurrentPanel().createCustomer(name, gallons_used);
             c.generateBill();
-            c.printCustomerInfo();
+
+            view.setOutputArea("Added \n" + c.printCustomerInfo());
 
         }
     }

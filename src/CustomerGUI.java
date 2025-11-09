@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 
 public class CustomerGUI  {
     private JFrame jFrame;
-    private JPanel inputPanel, namePanel, gallonsPanel, typePanel, buttonPanel, mainPanel;
+    private JPanel inputPanel, namePanel, gallonsPanel, typePanel, buttonPanel, mainPanel, dynamicPanel;
     private JTextField nameField, gallonsField;
     private JTextArea outputArea;
     private JButton billButton, showButton;
@@ -12,12 +12,33 @@ public class CustomerGUI  {
     private ButtonGroup typeGroup;
     private JScrollPane scrollPane;
 
+    private SingleFamilyPanel singleFamilyPanel;
+    private BaseCustomerPanel baseCustomerPanel;
+
+    private CustomerPanel currentPanel;
+
+    public CustomerPanel getCurrentPanel() {
+        return currentPanel;
+    }
+
+    public SingleFamilyPanel getSingleFamilyPanel() {
+        return singleFamilyPanel;
+    }
+
+    public BaseCustomerPanel getBaseCustomerPanel() {
+        return baseCustomerPanel;
+    }
+
     public JTextField getNameField() {
         return nameField;
     }
 
     public JTextField getGallonsField() {
         return gallonsField;
+    }
+
+    public void setOutputArea(String text) {
+        this.outputArea.setText(text);
     }
 
     public CustomerGUI() {
@@ -50,6 +71,13 @@ public class CustomerGUI  {
         outputArea = new JTextArea(10, 40);
         scrollPane = new JScrollPane(outputArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
+
+        dynamicPanel = new JPanel();
+        singleFamilyPanel = new SingleFamilyPanel();
+        baseCustomerPanel = new BaseCustomerPanel();
+
+
+
     }
 
     public void initializeUI(){
@@ -76,6 +104,10 @@ public class CustomerGUI  {
         typePanel.add(duplexButton);
         inputPanel.add(typePanel);
 
+        // Dynamic Panel
+        dynamicPanel.setLayout(new BorderLayout());
+        inputPanel.add(dynamicPanel);
+
         // Buttons
         buttonPanel.add(billButton);
         buttonPanel.add(showButton);
@@ -95,6 +127,23 @@ public class CustomerGUI  {
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.pack();
         jFrame.setVisible(true);
+    }
+
+    public void switchPanel(JPanel newPanel){
+        dynamicPanel.removeAll();
+        dynamicPanel.add(newPanel, BorderLayout.CENTER);
+        dynamicPanel.revalidate();
+        dynamicPanel.repaint();
+
+        currentPanel = (CustomerPanel) newPanel;
+    }
+
+    public void addActionListenerSingleFamily(ActionListener listener){
+       singleFamilyButton.addActionListener(listener);
+    }
+
+    public void addActionListenerDuplex(ActionListener listener){
+        duplexButton.addActionListener(listener);
     }
 
     public void addActionListenerGenerateBill(ActionListener listener){

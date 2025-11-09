@@ -106,13 +106,12 @@ public abstract class Customer {
         return calculatedBill;
     }
 
-    public void printCustomerInfo(){
-        System.out.println("Customer type: " + customerType);
-        System.out.println("Customer name: " + name);
-        System.out.println("Gallons used: " + gallonsUsed);
-        System.out.printf("Total Bill: $%.2f\n", bill);
+    public String printCustomerInfo() {
+        return "Customer Type: " + customerType + "\n" +
+                "Customer Name: " + name + "\n" +
+                "Gallons Used: " + gallonsUsed + "\n" +
+                "Total Bill: " + bill + "\n" ;
     }
-
 
     // ======================= Bill ============================================================
 
