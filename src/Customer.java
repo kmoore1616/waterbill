@@ -26,7 +26,6 @@ public abstract class Customer {
 
     public Customer(String name, int gallonsUsed) {
         setName(name);
-        setCustomerType(customerType);
         setGallonsUsed(gallonsUsed);
     }
 

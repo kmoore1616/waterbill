@@ -3,9 +3,11 @@ import java.awt.event.ActionListener;
 
 public class CustomerController {
     private CustomerGUI view;
+    private CustomerModel model;
 
     public CustomerController(CustomerGUI view){
         this.view = view;
+        this.model = new CustomerModel();
         view.addActionListenerGenerateBill(new ActionListenerGenerateBill());
         view.addActionListenerDuplex(new ActionListenerDuplex());
         view.addActionListenerSingleFamily(new ActionListenerSingleFamily());
@@ -14,7 +16,13 @@ public class CustomerController {
     public class ActionListenerDuplex implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            ;
+           view.switchPanel(view.getBaseCustomerPanel());
+           view.setCurrentPanel(new CustomerPanel() {
+               @Override
+               public Customer createCustomer(String name, int gallons_used) {
+                   return new Duplex(name, gallons_used);
+               }
+           });
         }
     }
 
@@ -39,8 +47,4 @@ public class CustomerController {
 
         }
     }
-
-
-
-
 }

@@ -17,6 +17,10 @@ public class CustomerGUI  {
 
     private CustomerPanel currentPanel;
 
+    public void setCurrentPanel(CustomerPanel currentPanel) {
+        this.currentPanel = currentPanel;
+    }
+
     public CustomerPanel getCurrentPanel() {
         return currentPanel;
     }

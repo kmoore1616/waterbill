@@ -8,6 +8,7 @@ public class Duplex extends Customer{
 
     public Duplex(String name, int gallons_used){
         super(name, gallons_used);
+        super.setCustomerType(0);
     }
 
 
